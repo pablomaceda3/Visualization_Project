@@ -1,1 +1,8 @@
-# Visualization_Project
+# Visualization Project
+
+# Objectives
+* This projects objectives are:
+  to evaluate...
+  to examine...
+  to ...
+  
