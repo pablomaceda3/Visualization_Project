@@ -1,5 +1,5 @@
 ﻿Source,Year,Mean,CO2_data_mean_global,CO2 % chg 
-"GISTEMP data for 2017 not available, CO2 data projected based on average increase over the decade.  In this case it was .58%.",2017,NA,404.464664,0.58%
+"GISTEMP data for 2017 not available, CO2 data projected based on average increase over the decade.  In this case it was .58%.",2017,NaN,404.464664,0.58%
 "GISTEMP,CO2 data projected based on average increase over the decade.  In this case it was .58%.",2016,0.99,402.1454958,0.58%
 "GISTEMP, CO2 data projected based on average increase over the decade.  In this case it was .58%.",2015,0.87,399.8396255,0.58%
 GISTEMP,2014,0.74,397.5469769,0.46%
