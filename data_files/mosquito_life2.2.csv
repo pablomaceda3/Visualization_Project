@@ -1,4 +1,4 @@
-Temperature,biting_rate,mosquito_develoment_rate,infection_probability,fecundity,adult_lifespan,incubation_rate,egg_to_adult_survival,transmission_probability
+Temperature,biting_rate,mosquito_development_rate,infection_probability,fecundity,adult_lifespan,incubation_rate,egg_to_adult_survival,transmission_probability
 10,0,0,0,0,10,0,0,0
 12.5,0.015,0.0125,0.05,0.5,12.5,0.005,0.075,0
 15,0.03,0.025,0.1,1,15,0.01,0.15,0
