@@ -32,14 +32,25 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/countries")
-def countries():
-    """Return a list of country names."""
+@app.route("/years")
+def years():
+    """Return a list of years."""
     stmt = db.session.query(Malaria_Data).statement
     df = pd.read_sql_query(stmt, db.session.bind)
 
 
-    return jsonify(list(df['Country'].unique()))
+    return jsonify(list(df['Year'].unique()))
+
+@app.route("/specific_year/<year>")
+def specific_year(year):
+    """Return all country's data for a given year"""
+    stmt = db.session.query(Malaria_Data).statement
+    df = pd.read_sql_query(stmt, db.session.bind)
+
+
+    data = df[(df['Year']==year)]
+
+    return jsonify(data)
 
 if __name__ == "__main__":
     app.run()
