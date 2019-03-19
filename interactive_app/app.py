@@ -38,8 +38,10 @@ def years():
     stmt = db.session.query(Malaria_Data).statement
     df = pd.read_sql_query(stmt, db.session.bind)
 
-
-    return jsonify(list(df['Year'].unique()))
+    years = []
+    for year in df['Year'].unique():
+        years.append(int(year))
+    return jsonify(years)
 
 @app.route("/specific_year/<year>")
 def specific_year(year):
@@ -48,7 +50,20 @@ def specific_year(year):
     df = pd.read_sql_query(stmt, db.session.bind)
 
 
-    data = df[(df['Year']==year)]
+    data_for_year = df[(df['Year']==int(year))]
+
+    years = []
+    incidences = []
+    for year in data_for_year['Year']:
+        years.append(int(year))
+    for incidence in data_for_year['value']:
+        incidences.append(int(incidence))
+
+    data = {
+        "year": years,
+        "country": data_for_year.Country.values.tolist(),
+        "incidence": incidences
+    }
 
     return jsonify(data)
 
