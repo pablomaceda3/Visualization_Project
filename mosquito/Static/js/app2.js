@@ -1,4 +1,3 @@
-// @TODO: YOUR CODE HERE!
 var svgWidth = 1000;
 var svgHeight = 600;
 
@@ -38,7 +37,12 @@ var valueline = d3.line()
 
 // get the data
 var url = "https://raw.githubusercontent.com/pablomaceda3/Visualization_Project/master/data_files/mosquito_life.csv"
+// var mosquito_data_url = '/mosquito'
 
+// change to json to be compatible with Flask application
+// d3.json(mosquito_data_url).then(function(mosquitoData) {
+//   Code to build chart here
+// })
 
 d3.csv(url)
   .then(function(error, data) {

@@ -100,6 +100,7 @@ var y = d3.scaleLinear().range([height, 0]);
 
 d3.csv(url)
     .then(function (Data) {
+        console.log(Data)
 
         // Step 1: Parse Data/Cast as numbers
         // ==============================

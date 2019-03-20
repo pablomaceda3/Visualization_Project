@@ -17,7 +17,7 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db/malaria.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db/datasets.db"
 db = SQLAlchemy(app)
 
 Base = automap_base()
@@ -25,6 +25,9 @@ Base = automap_base()
 Base.prepare(db.engine, reflect=True)
 
 Malaria_Data = Base.classes.malaria_viz_data
+# Climate_Data = Base.classes.prec_temp_usa
+Mosquito_Data = Base.classes.mosquito_life2
+# Lyme_Data = Base.classes.Region_Tick_Counts_per_100000
 
 @app.route("/")
 def index():
@@ -64,6 +67,17 @@ def specific_year(year):
         "country": data_for_year.Country.values.tolist(),
         "incidence": incidences
     }
+
+    return jsonify(data)
+
+
+@app.route("/mosquito")
+def mosquito():
+    """Return all data for mosquito data table"""
+    stmt = db.session.query(Mosquito_Data).statement
+    df = pd.read_sql_query(stmt, db.session.bind)
+
+    data = [{key : float(value[i]) for key, value in df.items()} for i in range(23)] 
 
     return jsonify(data)
 
