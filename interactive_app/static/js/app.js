@@ -1,12 +1,10 @@
 function buildChoropleth(year) {
   var year_url = `/specific_year/${year}`;
-  Plotly.d3.json(year_url).then(function(yearData) {
-
-    console.log(yearData.Country)
+  d3.json(year_url).then(function(yearData) {
     var data = [{
       type: 'choropleth',
-      locations: yearData.Country,
-      z: yearData.value,
+      locations: yearData.country,
+      z: yearData.incidence,
       colorscale: [
         [0,'rgb(5, 10, 172)'],[0.35,'rgb(40, 60, 190)'],
         [0.5,'rgb(70, 100, 245)'], [0.6,'rgb(90, 120, 245)'],
@@ -29,16 +27,26 @@ function buildChoropleth(year) {
     }];
 
     var layout = {
-      title: "2000 Malaria Incidence (per Million",
+      width: 500,
+      height: 500,
+      title:  `${year} Malaria Incidence (per Million)`,
       geo: {
+        resolution: '110',
         showframe: false, 
         showcoastlines: false, 
+        lataxis: {
+          range: [-60, 35]
+        },
+        lonaxis: {
+          range: [-135, -20]
+        },
         projection: {
-          type: 'mercator'
+          type: 'mercator',
+          scale: 1
         }
       }
     }
-    Plotly.plot('graph', data, layout, {showlink: false});
+    Plotly.newPlot('graph', data, layout, {showlink: false});
   });
 };
 
