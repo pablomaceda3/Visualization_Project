@@ -1,0 +1,41 @@
+.chart::before {
+  position: absolute;
+  top: 10px;
+  left: 100px;
+  z-index: -1;
+  display: block;
+  width: 1000px;
+  height: 635px;
+  content: " ";
+  background-image: url("Winkel_triple_projection_SW.jpg");
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+  opacity: 0.3;
+}
+
+.line {
+  fill: none;
+  stroke-width: 2px;
+}
+
+.red {
+  stroke: red;
+}
+
+.blue {
+  stroke: blue;
+}
+
+.text {
+  font-size: 16px;
+  text-anchor: middle;
+}
+
+.CO2-text {
+  fill: rgb(0, 0, 0);
+}
+
+.year-text {
+  fill: rgb(0, 0, 0);
+}
