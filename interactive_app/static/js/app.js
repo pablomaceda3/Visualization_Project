@@ -826,7 +826,7 @@ var svg = d3.select("body").append("svg")
     .attr("transform", 
           "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("us_lyme_final.csv", function(error, data) {
+d3.json("ticksus").then( function(error, data) {
 
     data.forEach(function(d) {
         d.Year = parseDate(d.Year);
