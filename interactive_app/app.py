@@ -25,9 +25,10 @@ Base = automap_base()
 Base.prepare(db.engine, reflect=True)
 
 Malaria_Data = Base.classes.malaria_viz_data
-# Climate_Data = Base.classes.prec_temp_usa
+Climate_Data = Base.classes.Temp_CO2_dataset
 Mosquito_Data = Base.classes.mosquito_life2
 # Lyme_Data = Base.classes.Region_Tick_Counts_per_100000
+
 
 @app.route("/")
 def index():
@@ -46,14 +47,14 @@ def years():
         years.append(int(year))
     return jsonify(years)
 
+
 @app.route("/specific_year/<year>")
 def specific_year(year):
     """Return all country's data for a given year"""
     stmt = db.session.query(Malaria_Data).statement
     df = pd.read_sql_query(stmt, db.session.bind)
 
-
-    data_for_year = df[(df['Year']==int(year))]
+    data_for_year = df[(df['Year'] == int(year))]
 
     years = []
     incidences = []
@@ -77,10 +78,25 @@ def mosquito():
     stmt = db.session.query(Mosquito_Data).statement
     df = pd.read_sql_query(stmt, db.session.bind)
 
-    data = [{key : float(value[i]) for key, value in df.items()} for i in range(23)] 
+    data = [{key: float(value[i]) for key, value in df.items()}
+            for i in range(23)]
+
+    return jsonify(data)
+
+
+@app.route("/climate")
+def climate():
+    """Return all data for climate data table"""
+    stmt = db.session.query(Climate_Data).statement
+    df = pd.read_sql_query(stmt, db.session.bind)
+
+    df['Year'] = df['Year'].astype('float')
+    df['Mean'] = df['Mean'].astype('float')
+    df['Co2_data_mean_global'] = df['Co2_data_mean_global'].astype('float')
+    
+    data = [{key: value[i] for key, value in df.items()} for i in range(138)]
 
     return jsonify(data)
 
 if __name__ == "__main__":
     app.run()
-
