@@ -1,10 +1,18 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9c0a647224a9a6e44b272c576dd9eca5ce267f9f
 .aText {
     font-family: sans-serif;
     font-size: 16px;
     text-anchor: middle;
   }
   
+<<<<<<< HEAD
   .active {
+=======
+.active {
+>>>>>>> 9c0a647224a9a6e44b272c576dd9eca5ce267f9f
     font-weight: bold;
     fill: #000;
     transition: fill 0.3s ease-out;
@@ -24,10 +32,17 @@
     left: 300px;
     z-index: 2;
     display: block;
+<<<<<<< HEAD
     width: 400px;
     height: 300px;
     content: "";
     background-image: url("https://cdn.orkin.com/images/mosquitoes/mosquito-illustration_2092x1660.jpg");
+=======
+    width: 600px;
+    height: 500px;
+    content: "";
+    background-image: url(mosquito.jpg);
+>>>>>>> 9c0a647224a9a6e44b272c576dd9eca5ce267f9f
     background-repeat: no-repeat;
     background-position: 50% 0;
     background-size: cover;
@@ -52,6 +67,12 @@
   
   /* Mobile Rules */
   @media screen and (max-width: 530px) {
+<<<<<<< HEAD
+=======
+    .stateText {
+      display: none;
+    }
+>>>>>>> 9c0a647224a9a6e44b272c576dd9eca5ce267f9f
   
     .aText {
       font-size: 14px;
@@ -62,4 +83,49 @@
     .aText {
       font-size: 13px;
     }
+<<<<<<< HEAD
+=======
+  }
+
+  .chart::before {
+    position: absolute;
+    top: 10px;
+    left: 100px;
+    z-index: -1;
+    display: block;
+    width: 1000px;
+    height: 635px;
+    content: " ";
+    background-image: url("Winkel_triple_projection_SW.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+    opacity: 0.3;
+  }
+  
+  .line {
+    fill: none;
+    stroke-width: 2px;
+  }
+  
+  .red {
+    stroke: red;
+  }
+  
+  .blue {
+    stroke: blue;
+  }
+  
+  .text {
+    font-size: 16px;
+    text-anchor: middle;
+  }
+  
+  .CO2-text {
+    fill: rgb(0, 0, 0);
+  }
+  
+  .year-text {
+    fill: rgb(0, 0, 0);
+>>>>>>> 9c0a647224a9a6e44b272c576dd9eca5ce267f9f
   }
