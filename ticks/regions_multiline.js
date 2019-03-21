@@ -21,6 +21,7 @@ d3.csv('regions.csv', function(error, data) {
     chart.render();
 
 });
+
 function makeLineChart(dataset, xName, yObjs, axisLables) {
     var chartObj = {};
     var color = d3.scale.category10();

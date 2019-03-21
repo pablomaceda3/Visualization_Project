@@ -27,8 +27,8 @@ Base.prepare(db.engine, reflect=True)
 Malaria_Data = Base.classes.malaria_viz_data
 Climate_Data = Base.classes.Temp_CO2_dataset
 Mosquito_Data = Base.classes.mosquito_life2
-# Lyme_Data = Base.classes.Region_Tick_Counts_per_100000
-
+Lyme_Data = Base.classes.Region_Tick_Counts_per_100000
+Lyme_Data_US = Base.classes.us_lyme_final
 
 @app.route("/")
 def index():
@@ -83,6 +83,25 @@ def mosquito():
 
     return jsonify(data)
 
+@app.route("/ticks-region")
+def ticks-region():
+    """Return all data for ticks region data table"""
+    stmt = db.session.query(Lyme_Data).statement
+    df = pd.read_sql_query(stmt, db.session.bind)
+
+    data = [{key: float(value[i]) for key, value in df.items()}
+            for i in range(20)]
+    return jsonify(data)
+
+@app.route("/ticks-us")
+def ticks-us():
+    """Return all data for ticks US data table"""
+    stmt = db.session.query(Lyme_Data_US).statement
+    df = pd.read_sql_query(stmt, db.session.bind)
+
+    data = [{key: float(value[i]) for key, value in df.items()}
+            for i in range(20)]
+    return jsonify(data)
 
 @app.route("/climate")
 def climate():
