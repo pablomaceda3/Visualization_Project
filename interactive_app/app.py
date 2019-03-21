@@ -84,7 +84,7 @@ def mosquito():
     return jsonify(data)
 
 @app.route("/ticks-region")
-def ticks-region():
+def ticksregion():
     """Return all data for ticks region data table"""
     stmt = db.session.query(Lyme_Data).statement
     df = pd.read_sql_query(stmt, db.session.bind)
@@ -94,7 +94,7 @@ def ticks-region():
     return jsonify(data)
 
 @app.route("/ticks-us")
-def ticks-us():
+def ticksus():
     """Return all data for ticks US data table"""
     stmt = db.session.query(Lyme_Data_US).statement
     df = pd.read_sql_query(stmt, db.session.bind)
