@@ -89,8 +89,28 @@ def ticksregion():
     stmt = db.session.query(Lyme_Data).statement
     df = pd.read_sql_query(stmt, db.session.bind)
 
-    data = [{key: float(value[i]) for key, value in df.items()}
-            for i in range(20)]
+    df['US Region'] = df['US Region'].astype('str')
+    df['2000'] = df['2000'].astype('float')
+    df['2001'] = df['2001'].astype('float')
+    df['2002'] = df['2002'].astype('float')
+    df['2003'] = df['2003'].astype('float')
+    df['2004'] = df['2004'].astype('float')
+    df['2005'] = df['2005'].astype('float')
+    df['2006'] = df['2006'].astype('float')
+    df['2007'] = df['2007'].astype('float')
+    df['2008'] = df['2008'].astype('float')
+    df['2009'] = df['2009'].astype('float')
+    df['2010'] = df['2010'].astype('float')
+    df['2011'] = df['2011'].astype('float')
+    df['2012'] = df['2012'].astype('float')
+    df['2013'] = df['2013'].astype('float')
+    df['2014'] = df['2014'].astype('float')
+    df['2015'] = df['2015'].astype('float')
+    df['2016'] = df['2016'].astype('float')
+    df['2017'] = df['2017'].astype('float')
+
+    data = [{key: value[i] for key, value in df.items()}
+        for i in range(5)]
     return jsonify(data)
 
 @app.route("/ticks-us")
@@ -99,8 +119,10 @@ def ticksus():
     stmt = db.session.query(Lyme_Data_US).statement
     df = pd.read_sql_query(stmt, db.session.bind)
 
+
+
     data = [{key: float(value[i]) for key, value in df.items()}
-            for i in range(20)]
+            for i in range(18)]
     return jsonify(data)
 
 @app.route("/climate")
@@ -118,4 +140,4 @@ def climate():
     return jsonify(data)
 
 if __name__ == "__main__":
-    app.run()
+    app.run() 

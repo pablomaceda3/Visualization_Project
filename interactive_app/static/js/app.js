@@ -708,7 +708,7 @@ function buildClimateViz() {
       .attr("class", "tooltip")
       .offset([80, -60])
       .html(function (d) {
-        return (`<br>Source:${d.Source1} <br>Year: ${(d.Year)} <br>Temperature C:${d.Mean}`);
+        return (`<br>Year: ${(d.Year)} <br>Temperature C:${d.Mean}`);
       });
 
     // Step 7: Create tooltip in the chart
@@ -742,7 +742,7 @@ function buildClimateViz() {
       .attr("class", "tooltip")
       .offset([80, -60])
       .html(function (d) {
-        return (`<br>Source: ${d.Source2}<br>Year:${d.Year}<br>Co2 levels:${d.Co2_data_mean_global}`);
+        return (`<br>Year:${d.Year}<br>Co2 levels:${d.Co2_data_mean_global}`);
       });
 
     // Step 7: Create tooltip in the chart
