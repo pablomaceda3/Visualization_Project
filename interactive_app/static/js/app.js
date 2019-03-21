@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var svgWidth = 800;
 var svgHeight = 500;
 
@@ -26,8 +25,6 @@ var chosenXAxis = "Temperature";
 var chosenYAxis = "biting_rate";
 
 
-=======
->>>>>>> 9c0a647224a9a6e44b272c576dd9eca5ce267f9f
 function buildChoropleth(year) {
   var year_url = `/specific_year/${year}`;
   d3.json(year_url).then(function (yearData) {
