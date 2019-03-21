@@ -1,3 +1,30 @@
+var svgWidth = 800;
+var svgHeight = 500;
+
+var margin = {
+  top: 20,
+  right: 40,
+  bottom: 85,
+  left: 160
+};
+
+var width = svgWidth - margin.left - margin.right;
+var height = svgHeight - margin.top - margin.bottom;
+
+var svg = d3.select("#area")
+  .append("svg")
+  .attr("width", svgWidth)
+  .attr("height", svgHeight);
+
+var chartGroup = svg.append("g")
+  .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+// Initial Params
+var chosenXAxis = "Temperature";
+
+var chosenYAxis = "biting_rate";
+
+
 function buildChoropleth(year) {
   var year_url = `/specific_year/${year}`;
   d3.json(year_url).then(function (yearData) {
