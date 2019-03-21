@@ -109,7 +109,7 @@ function makeLineChart(dataset, xName, yObjs, axisLables) {
     chartObj.update_svg_size = function () {
         chartObj.width = parseInt(chartObj.chartDiv.style("width"), 10) - (chartObj.margin.left + chartObj.margin.right);
 
-        chartObj.height = 700;
+        chartObj.height = 800;
 
         /* Update the range of the scale with new width/height */
         chartObj.xScale.range([0, chartObj.width]);
