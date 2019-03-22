@@ -35,7 +35,7 @@ function makeLineChart(dataset, xName, yObjs, axisLables) {
     chartObj.data = dataset;
     chartObj.margin = {top: 15, right: 60, bottom: 30, left: 50};
     chartObj.width = 1200 - chartObj.margin.left - chartObj.margin.right;
-    chartObj.height = 2000 - chartObj.margin.top - chartObj.margin.bottom;
+    chartObj.height = 1500 - chartObj.margin.top - chartObj.margin.bottom;
 
 // So we can pass the x and y as strings when creating the function
     chartObj.xFunct = function(d){return d[xName]};
@@ -109,7 +109,7 @@ function makeLineChart(dataset, xName, yObjs, axisLables) {
     chartObj.update_svg_size = function () {
         chartObj.width = parseInt(chartObj.chartDiv.style("width"), 10) - (chartObj.margin.left + chartObj.margin.right);
 
-        chartObj.height = 800;
+        chartObj.height = 600;
 
         /* Update the range of the scale with new width/height */
         chartObj.xScale.range([0, chartObj.width]);

@@ -791,7 +791,6 @@ function buildClimateViz() {
 
 }
 
-init();
 
 
 
@@ -803,21 +802,18 @@ var margin = {top: 20, right: 20, bottom: 70, left: 40},
     height = 750 - margin.top - margin.bottom;
 
 // Parse the date / time
-var	parseDate = d3.time.format("%Y").parse;
+// var	parseDate = d3.time.format("%Y").parse;
 
-var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
+// var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
 
-var y = d3.scale.linear().range([height, 0]);
+// var y = d3.scale.linear().range([height, 0]);
 
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom")
-    .tickFormat(d3.time.format("%Y"));
+var xAxis = d3.axisBottom(xAxis)
+    .tickFormat(function(d){ return d.x;});
+    
 
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .ticks(10);
+var yAxis = d3.axisLeft(yAxis);
+
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -826,16 +822,16 @@ var svg = d3.select("body").append("svg")
     .attr("transform", 
           "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json('/ticksus').then(function (error, data) {
+d3.json('/ticks-us').then(function (data) {
 
     data.forEach(function(d) {
-        d.Year = parseDate(d.Year);
+        d.Year = +d.Year;
         d.Incidents = +d.Incidents;
     });
 	
   x.domain(data.map(function(d) { return d.Year; }));
   y.domain([0, d3.max(data, function(d) { return d.Incidents; })]);
-
+  
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
@@ -869,7 +865,7 @@ d3.json('/ticksus').then(function (error, data) {
 
 //Ticks Regions
 
-d3.json('/ticksregion').then(function(data) {
+d3.json('/ticks-region').then(function(data) {
   console.log(data);
   data.forEach(function (d) {
       d.Year = +d.Year;
@@ -894,7 +890,8 @@ d3.json('/ticksregion').then(function(data) {
 
 function makeLineChart(dataset, xName, yObjs, axisLables) {
   var chartObj = {};
-  var color = d3.scale.category10();
+  var color = d3.scaleOrdinal(d3.schemeCategory10);
+
   chartObj.xAxisLable = axisLables.xAxis;
   chartObj.yAxisLable = axisLables.yAxis;
   /*
@@ -1090,3 +1087,5 @@ function makeLineChart(dataset, xName, yObjs, axisLables) {
   };
   return chartObj;
 }
+
+init();
