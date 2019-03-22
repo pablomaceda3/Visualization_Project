@@ -35,6 +35,9 @@ def index():
     """Return the homepage."""
     return render_template("index.html")
 
+@app.route("/ticksPage")
+def ticksPage():
+    return render_template("ticks.html")
 
 @app.route("/years")
 def years():
@@ -121,8 +124,8 @@ def ticksus():
 
 
 
-    data = [{key: float(value[i]) for key, value in df.items()}
-            for i in range(18)]
+    data = [{key: float(value[i]) for key, value in df.items()} for i in range(18)]
+    print(data)
     return jsonify(data)
 
 @app.route("/climate")
@@ -140,4 +143,4 @@ def climate():
     return jsonify(data)
 
 if __name__ == "__main__":
-    app.run() 
+    app.run(debug=True) 

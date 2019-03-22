@@ -764,7 +764,6 @@ function buildClimateViz() {
 
 }
 
-init();
 
 
 
