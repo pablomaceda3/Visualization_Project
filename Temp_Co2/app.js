@@ -187,7 +187,7 @@ d3.csv("https://raw.githubusercontent.com/pablomaceda3/Visualization_Project/mas
   .attr("dy", "1em")
   .attr("class", "axisText")
   .classed("red text", true)
-  .text("Temperature (Celcius)");
+  .text("Temperature");
 
   chartGroup.append("text")
   .attr("transform", `translate(${width / 2}, ${height + margin.top + 20})`)
